@@ -7,8 +7,8 @@ function loadData(link){
 }
 
 function show(data){
-  data.forEach(object=>{
-    console.log(object)
+  data.forEach(post=>{
+    console.log(post)
     //clone the template
     const clone = template.cloneNode(true);
 
@@ -16,12 +16,13 @@ function show(data){
     const h1 = clone.querySelector("h1");
     const section = clone.querySelector("section");
     const p = clone.querySelector("p");
-    h1.textContent=object.title.rendered;
-    section.innerHTML=object.content.rendered;
-    p.innerHTML=object._embedded.author[0].name;
+    h1.textContent=post.title.rendered;
+    section.innerHTML=post.content.rendered;
+
+    p.textContent=post._embedded.author[0].name;
     //append to DOM
-    //_embedded.author[""0""].name
     parent.appendChild(clone)
   })
 }
+
 loadData(myLink)
